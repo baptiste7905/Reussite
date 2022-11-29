@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/baptiste7905/Reussite/issues"
   },
-  "homepage": "https://github.com/baptiste7905/Reussite#readme"
+  "homepage": "https://github.com/baptiste7905/Reussite#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
