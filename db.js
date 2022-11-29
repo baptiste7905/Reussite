@@ -20,9 +20,22 @@ const cartes = sequelize.define('cartes', {
       },
 });
 
+const Classement = sequelize.define('Table', {
+  nom: {
+      type: DataTypes.STRING,
+      allowNull: false
+  },
+  Temps: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+  },
+
+});
+
 module.exports = {
   sequelize: sequelize,
   model: {
       cartes: cartes,
   }
 }
+
