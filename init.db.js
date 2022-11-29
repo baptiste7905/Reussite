@@ -200,5 +200,13 @@ async function initDB() {
 
 initDB()
     .then(() => {
-        console.log(db.model.cartes.findAll())
+        db.model.cartes.findAll({
+            attributes : ['nom']
+        }).then(data =>{
+            for (element of data) {
+                console.log(element.nom)
+            }
+            
+        });
+        console.log('base init')
     })
