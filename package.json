@@ -1,0 +1,19 @@
+{
+  "name": "reussite",
+  "version": "1.0.0",
+  "description": "Jeu de cartes réussite en grille",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baptiste7905/Reussite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baptiste7905/Reussite/issues"
+  },
+  "homepage": "https://github.com/baptiste7905/Reussite#readme"
+}
