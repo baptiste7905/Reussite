@@ -10,14 +10,10 @@ const cartes = sequelize.define('cartes', {
       type: DataTypes.STRING,
       allowNull: false
     },
-    position_c: {
+    position: {
       type: DataTypes.INTEGER,
       allowNull: false
-    },
-    position_l: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
+    }
 });
 
 const Classement = sequelize.define('Table', {
@@ -26,8 +22,7 @@ const Classement = sequelize.define('Table', {
       allowNull: false
   },
   Temps: {
-      type: DataTypes.INTEGER,
-      allowNull: false
+      type: DataTypes.INTEGER
   },
 
 });
@@ -36,6 +31,7 @@ module.exports = {
   sequelize: sequelize,
   model: {
       cartes: cartes,
+      Classement :Classement
   }
 }
 

@@ -4,6 +4,7 @@
   "description": "Jeu de cartes réussite en grille",
   "main": "index.js",
   "scripts": {
+    "init" :"node init.db.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,4 +1,4 @@
-const db = require("./db.js")
+const db = require("./db")
 
 async function initDB() {
     await db.sequelize.sync({force: true})
@@ -10,7 +10,7 @@ async function initDB() {
 
     data = await db.model.cartes.create({
         nom: "R_coeur",
-        position : 0,
+        position : 0
     })
 
     data = await db.model.cartes.create({
@@ -20,17 +20,17 @@ async function initDB() {
 
     data = await db.model.cartes.create({
         nom: "V_coeur",
-        position : 0,
+        position : 0
     })
 
     data = await db.model.cartes.create({
         nom: "10_coeur",
-        position : 0,
+        position : 0
     })
 
     data = await db.model.cartes.create({
         nom: "9_coeur",
-        position : 0,
+        position : 0
     })
 
     data = await db.model.cartes.create({
@@ -168,17 +168,7 @@ async function initDB() {
 
 initDB()
     .then(() => {
-        db.model.cartes.findAll({
-            attributes : ['nom']
-        }).then(data =>{
-            for (element of data) {
-                console.log(element.nom)
-            }
-            
-        });
-        console.log('base init')
-    })
-
     
-   
-
+        console.log('base init')
+    
+    })
