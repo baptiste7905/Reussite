@@ -8,13 +8,15 @@
     <body>
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Quel est ton nom" aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">Jouer</span>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button">Jouer</button>
+              </div>
           </div>
         
         
         <script>
-            document.querySelector("#basic-addon2").addEventListener("click", (event)=>{
-                fetch("play/?name="+document.querySelector+".form-control")
+            document.querySelector(".btn").addEventListener("click", (event)=>{
+                fetch("play/?name="+document.querySelector(".form-control").value)
             })
         </script>
     </body>

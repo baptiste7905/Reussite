@@ -4,7 +4,7 @@
   "description": "Jeu de cartes réussite en grille",
   "main": "index.js",
   "scripts": {
-    "init" :"node init.db.js",
+    "init": "node init.db.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/baptiste7905/Reussite#readme",
   "dependencies": {
     "chance": "^1.1.9",
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
     "sequelize": "^6.25.8",
     "sqlite3": "^5.1.2"

@@ -1,25 +1,27 @@
 const path = require('path')
 const db = require("./db")
 const express = require('express');
-const { readSync } = require('fs')
+const cookieParser = require('cookie-parser')
 
 const app = express()
 const hostname = '127.0.0.1';
 const port = 3000;
 
 
+app.use(cookieParser());
+
+app.use("/static", express.static(path.join(__dirname, '/static')))
 
 app.get("/index.html", (req, res) => {
-    res.statusCode = 200;
-    res.sendFile("index.html",{ root : __dirname})
+    res.redirect(301, "/static/index.html")
 })
 
-app.get("/play", (req, res) => {
-    nom = req.query["name"]
-    db.model.Classement.create({
-        nom : nom
-    })
 
+app.get("/static/play", (req, res) => {
+    nom = req.query["name"]
+    
+    res.cookie("player", nom)
+    res.redirect(301, "/static/game.html")
 })
 
 app.use((req, res) => {
