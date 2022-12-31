@@ -11,36 +11,146 @@
             <div class="row">
                 
                 <div class="col">
-                    <img src="cartes/V_trefle.svg"/>
+                    <img src="cartes/dos_carte.svg"/>
                 </div>
                 
                 <div class="col">
-                    <img src="cartes/7_trefle.svg"/>
+                    <img src="cartes/dos_carte.svg"/>
                 </div>
 
                 <div class="col">
-                    <img src="cartes/10_pique.svg"/>
+                    <img src="cartes/dos_carte.svg"/>
                 </div>
 
                 <div class="col">
-                    <img src="cartes/7_coeur.svg"/>
+                    <img src="cartes/dos_carte.svg"/>
                 </div>
 
                 <div class="col">
-                    <img src="cartes/1_trefle.svg"/>
+                    <img src="cartes/dos_carte.svg"/>
                 </div>
 
                 <div class="col">
-                    <img src="cartes/V_pique.svg"/>
+                    <img src="cartes/dos_carte.svg"/>
                 </div>
 
                 <div class="col">
-                    <img src="cartes/R_coeur.svg"/>
+                    <img src="cartes/dos_carte.svg"/>
                 </div>
 
             </div>
+
+            <div class="row">
+                
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+                
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+                
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+            </div>
+
+            <div class="row">
+                
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+                
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+                <div class="col">
+                    <img src="cartes/dos_carte.svg"/>
+                </div>
+
+            </div>
+
         
         </div>
+
+        <script>
+            liste_cartes = document.querySelectorAll(".col")
+            for (let i=0;i<28;i++) {
+
+                liste_cartes[i].addEventListener("click", (event)=>{
+                    fetch("carte/?position="+`${i}`).then(res=>res.json()).then(obj=>{
+                        liste_cartes[i].firstElementChild.src="cartes/"+obj.nom+".svg";
+                    });
+                })
+
+            }
+        </script>
         
     </body>
 </html>

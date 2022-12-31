@@ -168,7 +168,7 @@ async function initDB() {
 
 initDB()
     .then(() => {
-    
-        console.log('base init')
-    
+        
+        console.log("base init")
+
     })
