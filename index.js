@@ -28,7 +28,6 @@ app.get("/static/play", (req, res) => {
 
             data.position = pos_aleatoire[i];
             await data.save();
-            console.log(data.position);
         })
 
         
@@ -39,14 +38,12 @@ app.get("/static/play", (req, res) => {
 
 app.get("/static/carte", (req,res) => {
     pos = req.query["position"]
-    console.log(pos)
 
     db.model.cartes.findOne({
         where : {
             position: pos
         }
     }).then(data=>{
-        console.log(data.nom)
         res.json({
             nom : data.nom
         });
