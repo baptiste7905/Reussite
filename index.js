@@ -19,10 +19,10 @@ app.get("/index.html", (req, res) => {
 
 
 app.get("/static/play", (req, res) => {
-    nom = req.query["name"]
-    
-    res.cookie("player", nom)
-    pos_aleatoire = tirage.tirage_position
+    var nom = req.query["name"]
+
+    var pos_aleatoire = tirage.tirage_position()
+    console.log(pos_aleatoire)
     for (let i=0;i<32;i++) {
         db.model.cartes.findByPk(i+1).then(async data=>{
 
@@ -32,11 +32,17 @@ app.get("/static/play", (req, res) => {
 
         
     }
+    
+    res.cookie("player", nom)
 
-    res.redirect(301, "/static/game.html")
+    res.redirect("/static/game.html");
 })
 
+
+
 app.get("/static/carte", (req,res) => {
+    
+    
     pos = req.query["position"]
 
     db.model.cartes.findOne({
