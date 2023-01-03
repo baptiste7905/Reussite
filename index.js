@@ -35,7 +35,7 @@ app.get("/static/play", (req, res) => {
     
     res.cookie("player", nom)
 
-    res.redirect("/static/game.html");
+    res.end();
 })
 
 
