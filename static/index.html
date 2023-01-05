@@ -40,7 +40,10 @@
         
         <script>
             document.querySelector(".btn").addEventListener("click", (event)=>{
-                fetch("play/?name="+document.querySelector(".form-control").value)
+                fetch("play/?name="+document.querySelector(".form-control").value).then(()=>{
+                    url = new URL("/static/game.html",window.location.origin);
+                    window.location.href = url;
+                })
             })
         </script>
     </body>
