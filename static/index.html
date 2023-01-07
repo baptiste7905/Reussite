@@ -39,11 +39,19 @@
         
         
         <script>
-            document.querySelector(".btn").addEventListener("click", (event)=>{
-                fetch("play/?name="+document.querySelector(".form-control").value).then(()=>{
+            
+            document.querySelectorAll(".button")[0].addEventListener("click", (event)=>{
+                fetch("play/?name="+document.querySelector(".input").value).then(()=>{
                     url = new URL("/static/game.html",window.location.origin);
                     window.location.href = url;
                 })
+            })
+
+            document.querySelectorAll(".button")[1].addEventListener("click", (event)=>{
+                
+                    url = new URL("/static/classement.html",window.location.origin);
+                    window.location.href = url;
+
             })
         </script>
     </body>

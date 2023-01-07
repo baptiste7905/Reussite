@@ -57,6 +57,10 @@ app.get("/static/carte", (req,res) => {
 
 })
 
+app.get("/static/classement.html", (req, res) => {
+    req.cookies.
+})
+
 app.use((req, res) => {
     
     
