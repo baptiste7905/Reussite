@@ -7,7 +7,7 @@
         <title>Réussite</title>
     </head>
     <body>
-        
+        <img src="cartes/dos_carte.svg">
         <div class="container">
             
             <div class="row">
@@ -163,58 +163,46 @@
 
         <script>
 
+            // Image courante, toujours située au niveau du pointeur de la souris 
+            var current_card = document.querySelector("img");
             
+            current_card.style.position = "absolute"
+            // current_card.style.display = "none";
 
             emplacements = document.querySelectorAll(".col")
-            liste_carte = document.querySelectorAll(".draggable")
+            liste_carte = document.querySelectorAll(".draggable");
             
-            // for (let i=0;i<28;i++) {
+            document.addEventListener("mousemove", (event)=>{
+                current_card.style.left = event.pageX + 'px'
+                current_card.style.top = event.pageY + 'px';
 
-            //     liste_cartes[i].addEventListener("click", (event)=>{
-            //         fetch("carte/?position="+`${i}`).then(res=>res.json()).then(obj=>{
-            //             liste_cartes[i].src="cartes/"+obj.nom+".svg";
-            //         });
-            //     })
-
-            // }
-
+                })
+            
             for (let i=0;i<28;i++) {
+
+                // liste_carte[i].addEventListener("click", ()=>{
+                //     fetch("carte/?position="+`${i}`).then(res=>res.json()).then(obj=>{
+                //         liste_carte[i].src="cartes/"+obj.nom+".svg";
+                //         liste_carte[i].style.position = 'absolute';
+                //         document.querySelector(".container").addEventListener("mousemove", (event)=>{
+                //             liste_carte[i].style.left = event.pageX + 'px'
+                //             liste_carte[i].style.top = event.pageY + 'px'
+
+                //         })
+                //     });
+                    
+                // })
 
                 liste_carte[i].addEventListener("click", ()=>{
                     fetch("carte/?position="+`${i}`).then(res=>res.json()).then(obj=>{
-                        liste_carte[i].src="cartes/"+obj.nom+".svg";
-                        liste_carte[i].style.position = 'absolute';
-                        document.querySelector(".container").addEventListener("mousemove", (event)=>{
-                            liste_carte[i].style.left = event.pageX + 'px'
-                            liste_carte[i].style.top = event.pageY + 'px'
-
-                        })
+                        liste_carte[i].src=current_card.src;
+                        // liste_carte[i].style.position = 'absolute';
+                        current_card.src = "cartes/"+obj.nom+".svg";
+                        
                     });
                     
                 })
 
-                // emplacements[i].addEventListener("dragenter", (event)=>{
-
-                //     event.preventDefault();
-            
-                // })
-
-                // emplacements[i].addEventListener("dragover", (event)=>{
-                    
-                //     event.preventDefault();
-                //     event.dataTransfer.dropEffect = "link";
-                // })
-
-                // liste_cartes[i].addEventListener("click", (event)=>{
-
-                //     liste_cartes[i].dispatchEvent(simuldrag);
-
-                // })
-
-                // liste_cartes[i].addEventListener("dragstart", (event)=>{
-                //     event.preventDefault();
-                //     event.dataTransfer.setData("image/svg+xml","Carte")
-                // })
 
             }
 
