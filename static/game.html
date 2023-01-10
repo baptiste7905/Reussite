@@ -139,7 +139,7 @@
 
             
             
-            <div class="row justify-content-center">
+            <!-- <div class="row justify-content-center">
                 
                 <div class="col dropzone">
                     <img src="cartes/dos_carte.svg" class="draggable" draggable="true"/>
@@ -157,7 +157,7 @@
                     <img src="cartes/dos_carte.svg" class="draggable" draggable="true"/>
                 </div>
                 
-            </div>
+            </div> -->
 
         </div>
 
@@ -183,10 +183,10 @@
                 liste_carte[i].addEventListener("click", ()=>{
                     fetch("carte/?position="+`${i}`).then(res=>res.json()).then(obj=>{
                         liste_carte[i].src="cartes/"+obj.nom+".svg";
-                        liste_carte[i].style.position = 'relative';
-                        document.addEventListener("mousemove", (event)=>{
-                            liste_carte[i].style.left = event.screenX + 'px'
-                            liste_carte[i].style.top = event.screenY + 'px'
+                        liste_carte[i].style.position = 'absolute';
+                        document.querySelector(".container").addEventListener("mousemove", (event)=>{
+                            liste_carte[i].style.left = event.pageX + 'px'
+                            liste_carte[i].style.top = event.pageY + 'px'
 
                         })
                     });

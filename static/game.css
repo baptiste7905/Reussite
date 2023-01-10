@@ -2,3 +2,11 @@
 img:hover {
     opacity : 0.6
 }
+
+.container {
+    position: relative;
+}
+
+img {
+    height : 150px
+}
