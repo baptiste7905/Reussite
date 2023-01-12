@@ -138,7 +138,9 @@
             </div>
 
             
-            
+            <button class="button is-info is-half m-auto"> Tirer une carte ! </button>
+
+
             <!-- <div class="row justify-content-center">
                 
                 <div class="col dropzone">
@@ -171,6 +173,24 @@
 
             emplacements = document.querySelectorAll(".col")
             liste_carte = document.querySelectorAll(".draggable");
+            bouton_tirage = document.querySelector("button");
+            
+            
+            bouton_tirage.addEventListener("click", (event)=>{
+                fetch("tirage").then(res=>res.json()).then(obj => {
+                    console.log(obj.nom)
+                    if (obj.isBlocked) {
+                        bouton_tirage.disabled= true;
+                    }
+                    
+                    else {
+
+                        current_card.src = "cartes/"+obj.nom+".svg";
+
+                    }
+                    
+                })
+            })
             
             document.addEventListener("mousemove", (event)=>{
                 current_card.style.left = event.pageX + 'px'
@@ -194,10 +214,13 @@
                 // })
 
                 liste_carte[i].addEventListener("click", ()=>{
-                    fetch("carte/?position="+`${i}`).then(res=>res.json()).then(obj=>{
-                        liste_carte[i].src=current_card.src;
+                    fetch("carte/?position="+`${i}`+"&current="+current_card.src).then(res=>res.json()).then(obj=>{
+                        console.log(obj.nom)
+                        // console.log(obj.current)
+                        // liste_carte[i].src="cartes/"+obj.current+".svg";
+                        liste_carte[i].src=current_card.src
                         // liste_carte[i].style.position = 'absolute';
-                        current_card.src = "cartes/"+obj.nom+".svg";
+                        current_card.src = "cartes/"+obj.new_card+".svg";
                         
                     });
                     
@@ -209,6 +232,10 @@
 
 
             
+
+
+
+
         </script>
         
     </body>

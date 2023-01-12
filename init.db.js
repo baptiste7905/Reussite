@@ -54,7 +54,7 @@ async function initDB() {
     })
 
     data = await db.model.cartes.create({
-        nom: "D_coeur",
+        nom: "D_carreau",
         position : 0,
     })
 
