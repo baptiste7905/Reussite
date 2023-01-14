@@ -49,20 +49,26 @@ app.get("/static/play", (req, res) => {
 
 
 app.get("/static/tirage", (req, res)=>{
-    if (cpt<4){
+    
+    if (cpt<4){  //Si on peut encore tirer une carte
         
-        console.log(cpt)
+
         db.model.cartes.findOne({
             where :{
                 position : 28+cpt
             }
-        }).then(data=>{
+        }).then(async data=>{
             
             
             cpt++;
-            res.json({
+            
+            if ((data.nom=="7_carreau")||(data.nom=="7_coeur")||(data.nom=="7_pique")||(data.nom=="7_trefle")) { //Si la carte est un sept
+                cptSeven++;
+            }
+            await res.json({
                 nom : data.nom,
-                isBlocked : false
+                isBlocked : false,
+                gameOver : cptSeven==4 
             })
         })
 
@@ -80,41 +86,6 @@ app.get("/static/tirage", (req, res)=>{
     
 })
 
-// app.get("/static/carte", (req,res) => {
-    
-    
-//     pos = req.query["position"]
-    // var new_card;
-    // tmp = req.query["current"]
-    // tmp = tmp.split("/")[2]
-    
-    // current = tmp.split(".")[0]
-
-
-//     db.model.cartes.findOne({
-//         where : {
-//             position: pos
-//         }
-//     }).then(async data=>{
-        
-//         new_card = data.nom
-//         console.log(new_card)
-//         data.nom = current;
-        
-//         await data.save();
-        
-//         await console.log(data.nom)
-//         await console.log(new_card)
-//         await res.json({
-            
-//             nom : new_card,
-//             current : current
-
-            
-//         });
-//     })
-
-// })
 
 app.get("/static/carte", (req,res) => {
     
@@ -136,7 +107,11 @@ app.get("/static/carte", (req,res) => {
     }).then(async data=>{
         // Sauvegarde la valeur de la carte sous-jacente dans new_card + update de la position de celle-ci (-1 pour identifier le pointeur)
         
-        new_card = await data.nom
+        if ((data.nom=="7_carreau")||(data.nom=="7_coeur")||(data.nom=="7_pique")||(data.nom=="7_trefle")) { //Si la carte est un sept
+            cptSeven++;
+        }
+        new_card = data.nom
+        
         data.position = -1;
         await data.save();
 
@@ -152,6 +127,7 @@ app.get("/static/carte", (req,res) => {
             res.json({
                 
                 new_card : new_card,
+                gameOver : cptSeven==4
 
             })
 

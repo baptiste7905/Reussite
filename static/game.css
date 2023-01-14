@@ -1,10 +1,10 @@
 
-img:hover {
-    opacity : 0.6
+.container {
+    position : relative
 }
 
-.container {
-    position: relative;
+img:hover {
+    opacity : 0.6
 }
 
 img {
