@@ -9,8 +9,20 @@
     <body>
         
         
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse">
+
+                <a class="navbar-text">Réussite</a>
+                <button type="button" class="btn btn-primary btn-sm"> Tirer une carte ! </button>
+
+            </div>
+            
+            
+    
+            
+        </nav>
         <div class="container">
-            <img src="cartes/dos_carte.svg" height="100px">
+            <img src="cartes/dos_carte.svg" height="100px" id="currentCard">
             <div class="row" style="margin : 10px 0px 5px 0px">
                 
                 <div class="col dropzone">
@@ -156,11 +168,7 @@
 
         </div>
 
-        <div class="col-md-12 text-center" style="margin : 5px 0px 5px 0px">
-
-            <button type="button" class="btn btn-primary btn-sm"> Tirer une carte ! </button>
-
-        </div>
+        
 
         <!-- <div class="col-md-12 text-center" style="margin : 5px 0px 10px 0px">
 
@@ -175,9 +183,8 @@
         <script>
 
             // Image courante, toujours située au niveau du pointeur de la souris 
-            var current_card = document.querySelector("img");
+            var current_card = document.querySelector("#currentCard");
             
-            current_card.style.position = "absolute"
             // current_card.style.display = "none";
 
             emplacements = document.querySelectorAll(".col")
@@ -201,6 +208,14 @@
                         if (obj.gameOver) {
                         
                         document.querySelector(".container").style = "pointer-events : none"
+                        for (let j=0;j<28;j++) {
+                                if (liste_carte[j].src.substring(29)=="cartes/dos_carte.svg") {
+                                    fetch("revele/?position="+`${j}`).then(res=>res.json()).then(obj=>{
+                                        liste_carte[j].src="cartes/"+obj.nom+".svg"
+                                        liste_carte[j].style="filter : brightness(0.7) opacity(0.7);"
+                                    })
+                                }
+                            }
                         }
                     
                     }
@@ -210,8 +225,8 @@
             
             document.addEventListener("mousemove", (event)=>{
                 
-                current_card.style.left = event.pageX + 'px'
-                current_card.style.top = event.pageY + 'px';
+                current_card.style.left = String(parseInt(event.pageX)-150) + 'px'
+                current_card.style.top = String(parseInt(event.pageY)-100) + 'px';
 
                 })
             
@@ -232,7 +247,7 @@
                                 if (liste_carte[j].src.substring(29)=="cartes/dos_carte.svg") {
                                     fetch("revele/?position="+`${j}`).then(res=>res.json()).then(obj=>{
                                         liste_carte[j].src="cartes/"+obj.nom+".svg"
-                                        liste_carte[j].style="filter : brightness(0.7) opacity(0.7) sepia(1) hue-rotate(310deg);"
+                                        liste_carte[j].style="filter : brightness(0.7) opacity(0.7);"
                                     })
                                 }
                             }
@@ -246,6 +261,10 @@
 
 
             }
+
+            // document.querySelector("nav").addEventListener("mouseover", event=>{
+            //     current_card.style="opacity : 0.5"
+            // })
 
         </script>
         
