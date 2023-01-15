@@ -137,6 +137,24 @@ app.get("/static/carte", (req,res) => {
 
 })
 
+app.get("/static/revele",(req,res)=>{
+
+    pos= req.query["position"]
+    db.model.cartes.findOne({
+        where : {
+            position: pos
+        }
+    }).then(data=>{
+        res.json({
+
+            nom : data.nom
+
+        })
+    })
+
+
+})
+
 
 app.use((req, res) => {
     

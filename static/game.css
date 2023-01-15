@@ -1,12 +1,32 @@
 
+body {
+    background: linear-gradient(180deg, #53a953 35%, black 90%);
+    background-size: 200% 200%;
+
+}
 .container {
-    position : relative
+    position : relative;
+    padding: 10px 0 10px 0;
+}
+.draggable {
+    border-radius: 20px;
+    transition: background-color 0.5s;
+}
+.draggable:hover{
+    background-color: rgba(255, 255, 255, 0.911);
 }
 
-img:hover {
-    opacity : 0.6
-}
 
 img {
     height : 150px
+}
+
+.row {
+    background-color: #00000024;;
+    border-radius: 5px;
+    /* height: 150px; */
+}
+
+.col {
+    height : 160px,
 }

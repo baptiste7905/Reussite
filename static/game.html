@@ -7,10 +7,11 @@
         <title>Réussite</title>
     </head>
     <body>
-        <img src="cartes/dos_carte.svg">
+        
+        
         <div class="container">
-            
-            <div class="row">
+            <img src="cartes/dos_carte.svg" height="100px">
+            <div class="row" style="margin : 10px 0px 5px 0px">
                 
                 <div class="col dropzone">
                     <img src="cartes/dos_carte.svg" class="draggable"/>
@@ -42,7 +43,7 @@
 
             </div>
 
-            <div class="row">
+            <div class="row" style="margin : 5px 0px 5px 0px">
                 
                 <div class="col dropzone">
                     <img src="cartes/dos_carte.svg" class="draggable"/>
@@ -74,10 +75,10 @@
 
             </div>
 
-            <div class="row">
+            <div class="row" style="margin : 5px 0px 5px 0px">
                 
                 <div class="col dropzone">
-                    <img src="cartes/dos_carte.svg" class="draggable"/>
+                    <img src="cartes/dos_carte.svg" class="draggable" data-mdb-toggle="animation" data-mdb-animation-resest="true" data-mdb-animation="pulse"/>
                 </div>
                 
                 <div class="col dropzone">
@@ -106,7 +107,7 @@
 
             </div>
 
-            <div class="row">
+            <div class="row"style="margin : 5px 0px 5px 0px">
                 
                 <div class="col dropzone">
                     <img src="cartes/dos_carte.svg" class="draggable"/>
@@ -137,10 +138,39 @@
                 </div>
             </div>
 
+            <!-- <div class="row" style="margin : 5px 0px 5px 0px">
+
+                <button type="button" class="btn btn-primary btn-sm"> Tirer une carte ! </button>
+
+            </div>
+
+            <div class="row" style="margin : 5px 0px 10px 0px">
+
+                <button type="button" class="btn btn-danger btn-lg btn-block" disabled>Résultats</button>
+
+            </div> -->
+
             
-            <button class="button is-info is-half m-auto"> Tirer une carte ! </button>
+            
+            
 
         </div>
+
+        <div class="col-md-12 text-center" style="margin : 5px 0px 5px 0px">
+
+            <button type="button" class="btn btn-primary btn-sm"> Tirer une carte ! </button>
+
+        </div>
+
+        <!-- <div class="col-md-12 text-center" style="margin : 5px 0px 10px 0px">
+
+            <button type="button" class="btn btn-danger btn-sm" disabled>Résultats</button>
+
+        </div> -->
+
+        
+
+        
 
         <script>
 
@@ -198,6 +228,14 @@
                         if (obj.gameOver) {
                         
                             document.querySelector(".container").style = "pointer-events : none"
+                            for (let j=0;j<28;j++) {
+                                if (liste_carte[j].src.substring(29)=="cartes/dos_carte.svg") {
+                                    fetch("revele/?position="+`${j}`).then(res=>res.json()).then(obj=>{
+                                        liste_carte[j].src="cartes/"+obj.nom+".svg"
+                                        liste_carte[j].style="filter : brightness(0.7) opacity(0.7) sepia(1) hue-rotate(310deg);"
+                                    })
+                                }
+                            }
                         
                         }
 
